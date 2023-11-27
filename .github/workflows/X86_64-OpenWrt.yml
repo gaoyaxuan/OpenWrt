@@ -216,8 +216,8 @@ jobs:
           openjdk* \
           mysql* \
           php*  \
-          mongodb*  \
-          aspnetcore* 
+          moby*  \
+          aspnetcore* || true
         sudo rm -rf $AGENT_TOOLSDIRECTORY
         sudo -E apt-get -qq update
         sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
