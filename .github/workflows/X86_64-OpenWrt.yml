@@ -186,8 +186,38 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
       run: |
         docker rmi $(docker images -q)
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /etc/mysql /etc/php /usr/local/lib/android
-        sudo -E apt-get -y purge azure-cli* docker* ghc* zulu* llvm* firefox* google* dotnet* powershell* openjdk* mysql* php* mongodb* snap* aspnetcore*
+        sudo rm -rf \
+          /etc/apt/sources.list.d/* 
+          /usr/share/dotnet \
+          /etc/mysql \
+          /usr/local/lib/android  \
+          /etc/php \
+          /usr/share/php*   \
+          /usr/share/mysql*    \
+          /usr/lib/google-cloud-sdk  \
+          /usr/lib/jvm   \
+          /opt/microsoft  \
+          /opt/google  \
+          /opt/opt/hostedtoolcache  \
+          /usr/local/share   \
+          /usr/local/graalvm  \
+          /usr/local/lib/node_modules
+        sudo -E apt-get -y purge \
+          azure-cli* \
+          docker*  \
+          ghc* \
+          zulu* \
+          hhvm* \
+          llvm* \
+          firefox* \
+          google* \
+          dotnet* \
+          powershell* \
+          openjdk* \
+          mysql* \
+          php*  \
+          mongodb*  \
+          aspnetcore* \
         sudo rm -rf $AGENT_TOOLSDIRECTORY
         sudo -E apt-get -qq update
         sudo -E apt-get -y install $(curl -fsSL is.gd/depends_ubuntu_2204)
