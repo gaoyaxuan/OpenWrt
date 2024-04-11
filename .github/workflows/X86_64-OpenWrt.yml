@@ -275,8 +275,10 @@ jobs:
 
     - name: Install Feeds
       run: |
+        # OPENWRT_PATH: /home/runner/work/OpenWrt/OpenWrt/workspace/openwrt
+        #OPENWRT_PATH: /home/runner/work/OpenWrt/OpenWrt
         echo "OPENWRT_PATH: $OPENWRT_PATH"
-        echo "$GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
         cd $OPENWRT_PATH
         cp $GITHUB_WORKSPACE/$DIY_SRC   ./$DIY_SRC 
         bash $DIY_SRC 
