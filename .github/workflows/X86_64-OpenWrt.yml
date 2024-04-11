@@ -110,7 +110,7 @@ jobs:
       if: steps.hash.outputs.REBUILD_TOOLCHAIN == 'true'
       run: |
         cd $OPENWRT_PATH
-        make defconfig
+        make  
         echo -e "$(nproc) thread compile"
         make tools/compile -j$(nproc) || make tools/compile -j1 V=s
 
