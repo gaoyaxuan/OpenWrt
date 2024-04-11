@@ -10,6 +10,7 @@ env:
   SOURCE_BRANCH: master
   CONFIG_FILE: configs/x86_64.config
   DIY_SCRIPT: diy-script.sh
+  DIY_SRC: diy-src.sh
   TOOLCHAIN_TAG: Toolchain
   CLASH_KERNEL: amd64
   UPLOAD_BIN_DIR: false
@@ -274,7 +275,11 @@ jobs:
 
     - name: Install Feeds
       run: |
+        echo "OPENWRT_PATH: $OPENWRT_PATH"
+        echo "$GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
         cd $OPENWRT_PATH
+        cp $GITHUB_WORKSPACE/$DIY_SRC   ./$DIY_SRC 
+        bash $DIY_SRC 
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -285,7 +290,8 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/scripts/*.sh
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/$DIY_SCRIPT
+        cp $GITHUB_WORKSPACE/$DIY_SCRIPT  $DIY_SCRIPT
+        bash $DIY_SCRIPT
 #        $GITHUB_WORKSPACE/scripts/preset-clash-core.sh $CLASH_KERNEL
 #        $GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
 #        $GITHUB_WORKSPACE/scripts/preset-adguard-core.sh $CLASH_KERNEL
