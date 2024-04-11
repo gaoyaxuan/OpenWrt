@@ -9,17 +9,9 @@
 # TTYD 自动登录
 # sed -i 's|/bin/login|/bin/login -f root|g' feeds/packages/utils/ttyd/files/ttyd.config
 
-#
-
-echo "src-git kenzok https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
-echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
-
-git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
-git clone --depth=1 https://github.com/destan19/OpenAppFilter package/OpenAppFilter
-
 
 # 更改 Argon 主题背景
-#cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+cp -f $GITHUB_WORKSPACE/images/bg1.jpg package/luci-theme-argon/htdocs/luci-static/argon/img/bg2.jpg
 
 
 # x86 型号只显示 CPU 型号
